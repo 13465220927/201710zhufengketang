@@ -9,7 +9,7 @@ export default class Tab extends Component {
           <i className="iconfont icon-xingqiu"></i>
           <span>首页</span>
         </NavLink>
-        <NavLink to="/courses">
+        <NavLink to="/course">
           <i className="iconfont icon-react"></i>
           <span>我的课程</span>
         </NavLink>
