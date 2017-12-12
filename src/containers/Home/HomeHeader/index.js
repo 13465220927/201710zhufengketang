@@ -1,20 +1,27 @@
 import React, {Component} from 'react';
 import './index.less';
+import {TransitionGroup, CSSTransition} from 'react-transition-group';
 export default class HomeHeader extends Component {
   constructor() {
     super();
     this.state = {showList: false};
   }
-  handleClick = ()=>{
-    this.setState({showList:!this.state.showList});
+
+  handleClick = () => {
+    this.setState({showList: !this.state.showList});
   }
-  getMenuList = ()=>(
-    <ul className="menu-list">
-      <li data-type="">全部课程</li>
-      <li data-type="react">React课程</li>
-      <li data-type="vue">Vue课程</li>
-    </ul>
-  )
+  getMenuList = () => (
+    <TransitionGroup>
+      <CSSTransition classNames="fade" timeout={500}>
+        <ul className="menu-list">
+          <li data-type="">全部课程</li>
+          <li data-type="react">React课程</li>
+          <li data-type="vue">Vue课程</li>
+        </ul>
+      </CSSTransition>
+    </TransitionGroup>
+)
+
   render() {
     return (
       <div className="home-header">
@@ -22,12 +29,12 @@ export default class HomeHeader extends Component {
           <img src={require('../../../images/logo.png')}/>
           <div onClick={this.handleClick}>
             {
-              this.state.showList?<i className="iconfont icon-guanbi"></i>:<i className="iconfont icon-uilist"></i>
+              this.state.showList ? <i className="iconfont icon-guanbi"></i> : <i className="iconfont icon-uilist"></i>
             }
           </div>
         </div>
         {
-          this.state.showList&&this.getMenuList()
+          this.state.showList && this.getMenuList()
         }
       </div>
     )

@@ -10,11 +10,10 @@ export default {
       })
       //调用后台接口获取数据，然后派发请求轮播图数据结束的action
       //{home:{sliders:{loading,list:[.....]}}}
-      getSliders().then(payload=>{
-        dispatch({
-          type:types.FETCH_SLIDERS_SUCCESS,
-          payload//放的就是轮播数组了
-        })
+      //如果一个action对象是一个promise,那么 redux-promise中间件会等待这个promise完成后再次派发相同 type的action
+      dispatch({
+        type:types.FETCH_SLIDERS_SUCCESS,
+        payload:getSliders()//放的就是轮播数组了
       })
     }
   }
