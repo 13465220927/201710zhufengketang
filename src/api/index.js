@@ -4,9 +4,9 @@ const HOST = 'http://localhost:3000';
 export function get(url){
   return fetch(HOST+url,{
     method:'GET',
-    credentials:"include",
+    credentials:"include",//向服务器发送cookie
     headers:{
-      "Accept":"application/json",
+      "Accept":"application/json",//请求头
     }
   }).then(res=>res.json())//把响应体转成json
 }

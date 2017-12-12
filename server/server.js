@@ -1,6 +1,7 @@
 let express = require('express');
 let app = express();
 app.use(function(req,res,next){
+  //如果在webpack里配置了代理，那么这些响应头都不要了
   //只允许8080访问
   res.header('Access-Control-Allow-Origin','http://localhost:8080');
   //服务允许客户端发的方法
