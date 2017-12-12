@@ -17,7 +17,7 @@ app.use(function(req,res,next){
   }
 });
 let sliders = require('./mock/sliders');
-app.get('/sliders',function(req,res){
+app.get('/api/sliders',function(req,res){
  res.json(sliders);
 });
 app.listen(3000);
