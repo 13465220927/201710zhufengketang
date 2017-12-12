@@ -13,7 +13,7 @@ npm install es6-promise history react react-dom react-redux react-router-dom rea
 ```
 ## 开发依赖
 ```
-npm install babel-core babel-loader babel-preset-es2015 babel-preset-react babel-preset-stage-0 css-loader file-loader html-webpack-plugin less less-loader style-loader webpack webpack-dev-server html-webpack-plugin -D
+npm install babel-core babel-loader babel-preset-es2015 babel-preset-react babel-preset-stage-0 css-loader file-loader url-loader html-webpack-plugin less less-loader style-loader webpack webpack-dev-server html-webpack-plugin  -D
 ```
 ## 资源文件
 - images 图片
