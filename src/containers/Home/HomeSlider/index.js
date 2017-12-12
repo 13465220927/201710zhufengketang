@@ -2,24 +2,28 @@ import React, {Component} from 'react';
 import ReactSwipe from 'react-swipe';
 import {getSliders} from '../../../api/home';
 export default class HomeSlider extends Component {
-  componentDidMount(){
-    getSliders().then(sliders=>{
-      console.log(sliders);
-    });
-  }
   render() {
     let swipeOptions = {
       auto: 3000,//加载完成后等待多少毫秒开始轮播
       continuous: true,//是否启动无缝轮播
       callback: function(index, elem) {},//当动画完成后执行回调函数
     };
+    let swipe = (
+      <ReactSwipe swipeOptions={swipeOptions}>
+        {
+          this.props.sliders.map((item,index)=>(
+            <div key={index}>
+              <img src={item}/>
+            </div>
+          ))
+        }
+      </ReactSwipe>
+    )
     return (
       <div className="home-sliders" >
-        <ReactSwipe swipeOptions={swipeOptions}>
-          <div>面板1</div>
-          <div>面板2</div>
-          <div>面板3</div>
-        </ReactSwipe>
+        {
+          this.props.sliders.length>0?swipe:null
+        }
       </div>
     )
   }
