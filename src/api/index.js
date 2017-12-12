@@ -18,6 +18,6 @@ export function post(url,data) {
     headers:{//请求头
       "Accept":"application/json"//告诉服务器我客户端需要的数据类型
     },
-    body:JSON.string(data)//请求体
+    body:JSON.stringify(data)//请求体
   })
 }
