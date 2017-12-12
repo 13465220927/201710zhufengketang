@@ -1,4 +1,4 @@
 import {get, post} from './index';
 export function getSliders() {
-  return get('/sliders');
+  return get('/api/sliders');
 }

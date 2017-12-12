@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
 import ReactSwipe from 'react-swipe';
+import {getSliders} from '../../../api/home';
 export default class HomeSlider extends Component {
+  componentDidMount(){
+    getSliders().then(sliders=>{
+      console.log(sliders);
+    });
+  }
   render() {
     let swipeOptions = {
       auto: 3000,//加载完成后等待多少毫秒开始轮播
