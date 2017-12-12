@@ -11,7 +11,6 @@ export default class HomeHeader extends Component {
     this.setState({showList: !this.state.showList});
   }
   getMenuList = () => (
-    <TransitionGroup>
       <CSSTransition classNames="fade" timeout={500}>
         <ul className="menu-list">
           <li data-type="">全部课程</li>
@@ -19,7 +18,6 @@ export default class HomeHeader extends Component {
           <li data-type="vue">Vue课程</li>
         </ul>
       </CSSTransition>
-    </TransitionGroup>
 )
 
   render() {
@@ -33,9 +31,11 @@ export default class HomeHeader extends Component {
             }
           </div>
         </div>
-        {
-          this.state.showList && this.getMenuList()
-        }
+        <TransitionGroup>
+          {
+            this.state.showList && this.getMenuList()
+          }
+        </TransitionGroup>
       </div>
     )
   }
