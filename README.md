@@ -15,4 +15,15 @@ npm install es6-promise history react react-dom react-redux react-router-dom rea
 ```
 npm install babel-core babel-loader babel-preset-es2015 babel-preset-react babel-preset-stage-0 css-loader file-loader html-webpack-plugin less less-loader style-loader webpack webpack-dev-server html-webpack-plugin -D
 ```
+## 资源文件
+- images 图片
+
+
+## 目录规划
+### container
+容器组件，每个组件对应一个页面
+### components
+放置着可复用的组件
+### store
+放着我们的redux仓库
 
