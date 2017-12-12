@@ -8,7 +8,7 @@ app.use(function(req,res,next){
   //服务器允许的请求头
   res.header('Access-Control-Allow-Headers','Content-Type,Accept');
   //允许客户端把cookie发过来
-  res.header('Access-Control-Allow-Credential','true');
+  res.header('Access-Control-Allow-Credentials','true');
   //如果请求的方法是OPTIONS,那么意味着客户端只要响应头，直接结束响应即可
   if(req.method == 'OPTIONS'){
     res.end();
