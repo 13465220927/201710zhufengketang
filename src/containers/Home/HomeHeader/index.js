@@ -8,6 +8,13 @@ export default class HomeHeader extends Component {
   handleClick = ()=>{
     this.setState({showList:!this.state.showList});
   }
+  getMenuList = ()=>(
+    <ul className="menu-list">
+      <li data-type="">全部课程</li>
+      <li data-type="react">React课程</li>
+      <li data-type="vue">Vue课程</li>
+    </ul>
+  )
   render() {
     return (
       <div className="home-header">
@@ -19,6 +26,9 @@ export default class HomeHeader extends Component {
             }
           </div>
         </div>
+        {
+          this.state.showList&&this.getMenuList()
+        }
       </div>
     )
   }
