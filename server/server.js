@@ -21,8 +21,21 @@ let sliders = require('./mock/sliders');
 app.get('/api/sliders',function(req,res){
  res.json(sliders);
 });
-let lessons = require('./mock/lessons');
+let lessons = require('./mock/lessons');//{hasMore,list}
 app.get('/api/lessons',function(req,res){
-  res.json(lessons);
+  let {offset=0,limit=5} = req.query;
+  offset = isNaN(offset)?0:parseInt(offset);
+  limit = isNaN(limit)?0:parseInt(limit);
+  let newLessons = JSON.parse(JSON.stringify(lessons));
+  // 0+5  5+5=10 10+5=15 15+5=20
+  //如果下一页的起始索引已经大于等于总条数了，则认为已经分页完毕，后面已经没有数据了
+  newLessons.hasMore = limit+offset<newLessons.list.length;//20
+  //提取指定页的数据
+  newLessons.list = newLessons.list.slice(offset,offset+limit);//offset0 0-4
+  for(let i=0;i<newLessons.list.length;i++){
+    let lesson = newLessons.list[i];
+    lesson.title = `${offset+i+1}-${lesson.title}`;
+  }
+  res.json(newLessons);
 });
 app.listen(3000);
