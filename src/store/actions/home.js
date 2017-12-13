@@ -31,5 +31,19 @@ export default {
         dispatch({type:types.FETCH_LESSONS_SUCCESS,payload:getLessons(offset,limit)});
       }
     }
+  },
+  //下拉刷新
+  refreshLessons(){
+    return function(dispatch,getState){
+      let {
+        lessons:{
+          loading,offset,limit,hasMore
+        }
+      } = getState().home;
+      if(!loading){
+         dispatch({type:});
+         dispatch({type:,payload:});
+      }
+    }
   }
 }
