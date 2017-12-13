@@ -7,6 +7,7 @@ import actions from '../../store/actions/home';
 class Home extends Component {
   componentDidMount(){
     this.props.fetchSliders();
+    this.props.fetchLessons();
   }
   render() {
     return (

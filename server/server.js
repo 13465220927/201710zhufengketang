@@ -21,4 +21,8 @@ let sliders = require('./mock/sliders');
 app.get('/api/sliders',function(req,res){
  res.json(sliders);
 });
+let lessons = require('./mock/lessons');
+app.get('/api/lessons',function(req,res){
+  res.json(lessons);
+});
 app.listen(3000);

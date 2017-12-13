@@ -33,7 +33,7 @@ export default class HomeSlider extends Component {
         <div className="dots">
           {
             this.props.sliders.map((item,index)=>(
-              <span className={"dot "+(this.state.index == index?"active":"")}></span>
+              <span key={index} className={"dot "+(this.state.index == index?"active":"")}></span>
             ))
           }
         </div>
