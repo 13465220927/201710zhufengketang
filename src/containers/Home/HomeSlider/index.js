@@ -1,12 +1,18 @@
 import React, {Component} from 'react';
 import ReactSwipe from 'react-swipe';
-import {getSliders} from '../../../api/home';
+import './index.less';
 export default class HomeSlider extends Component {
+  constructor(){
+    super();
+    this.state = {index:0};
+  }
   render() {
     let swipeOptions = {
       auto: 3000,//加载完成后等待多少毫秒开始轮播
       continuous: true,//是否启动无缝轮播
-      callback: function(index, elem) {},//当动画完成后执行回调函数
+      callback: (index) => {
+        this.setState({index});
+      },//当动画完成后执行回调函数
     };
     let swipe = (
       <ReactSwipe swipeOptions={swipeOptions}>
@@ -24,6 +30,13 @@ export default class HomeSlider extends Component {
         {
           this.props.sliders.length>0?swipe:null
         }
+        <div className="dots">
+          {
+            this.props.sliders.map((item,index)=>(
+              <span className={"dot "+(this.state.index == index?"active":"")}></span>
+            ))
+          }
+        </div>
       </div>
     )
   }
