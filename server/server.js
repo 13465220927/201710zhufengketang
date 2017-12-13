@@ -17,9 +17,9 @@ app.use(function(req,res,next){
     next();
   }
 });
-app.use(function sleep(req,res,next){
+/*app.use(function sleep(req,res,next){
   setTimeout(next,2000);
-});
+});*/
 let sliders = require('./mock/sliders');
 app.get('/api/sliders',function(req,res){
     res.json(sliders);
