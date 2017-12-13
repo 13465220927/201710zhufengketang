@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ReactSwipe from 'react-swipe';
 import './index.less';
+import Loading from "../../../components/Loading/index";
 export default class HomeSlider extends Component {
   constructor(){
     super();
@@ -28,7 +29,7 @@ export default class HomeSlider extends Component {
     return (
       <div className="home-sliders" >
         {
-          this.props.sliders.length>0?swipe:null
+          this.props.sliders.length>0?swipe:<Loading/>
         }
         <div className="dots">
           {

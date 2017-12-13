@@ -20,6 +20,7 @@ class Home extends Component {
             <HomeSlider sliders={this.props.sliders.list}/>
             <HomeLessons
               hasMore={this.props.lessons.hasMore}
+              loading={this.props.lessons.loading}
               fetchLessons={this.props.fetchLessons}
               lessons={this.props.lessons.list}/>
         </div>
