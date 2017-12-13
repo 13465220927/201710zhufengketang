@@ -41,8 +41,8 @@ export default {
         }
       } = getState().home;
       if(!loading){
-         dispatch({type:});
-         dispatch({type:,payload:});
+         dispatch({type:types.REFRESH_LESSONS});
+         dispatch({type:types.REFRESH_LESSONS_SUCCESS,payload:getLessons(0,offset)});
       }
     }
   }

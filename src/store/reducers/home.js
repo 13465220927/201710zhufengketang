@@ -52,6 +52,26 @@ export default function (state = initState, action) {
           hasMore:action.payload.hasMore//是否有更多
         }
       }
+    case types.REFRESH_LESSONS:
+      return {
+        ...state,
+        lessons:{
+          ...state.lessons,
+          loading:true,
+          list:[]
+        }
+      }
+    case types.REFRESH_LESSONS_SUCCESS:
+      return {
+        ...state,
+        lessons:{
+          ...state.lessons,
+          loading:false,
+          list:[...action.payload.list],
+          offset:action.payload.list.length,
+          hasMore:action.payload.hasMore
+        }
+      }
     default:
       return state;
   }
