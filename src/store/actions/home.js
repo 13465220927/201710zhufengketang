@@ -19,8 +19,17 @@ export default {
   },
   fetchLessons(){
     return function(dispatch,getState){
-      dispatch({type:types.FETCH_LESSONS});
-      dispatch({type:types.FETCH_LESSONS_SUCCESS,payload:getLessons()});
+      let {lessons:{
+        loading,
+        offset,
+        limit
+      }} = getState().home;
+      //如果已经在获取数据了，则重复点击不要再获取了
+      if(!loading){
+        dispatch({type:types.FETCH_LESSONS});
+        dispatch({type:types.FETCH_LESSONS_SUCCESS,payload:getLessons(offset,limit)});
+      }
+
     }
   }
 }

@@ -17,6 +17,8 @@ class Home extends Component {
         <div className="main-content">
             <HomeSlider sliders={this.props.sliders.list}/>
             <HomeLessons
+              hasMore={this.props.lessons.hasMore}
+              fetchLessons={this.props.fetchLessons}
               lessons={this.props.lessons.list}/>
         </div>
       </div>
