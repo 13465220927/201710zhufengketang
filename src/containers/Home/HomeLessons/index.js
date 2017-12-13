@@ -17,9 +17,13 @@ export default class HomeLessons extends Component {
             </div>
           ))
         }
-        <div onClick={this.props.fetchLessons} className="load-more">
-          {this.props.hasMore?'加载更多':'别扯了，到底了'}
-        </div>
+        {
+          this.props.hasMore?<div onClick={this.props.fetchLessons} className="load-more">
+            加载更多
+          </div>:<div className="load-more">
+            别扯了，到底了
+          </div>
+        }
       </div>
     )
   }
