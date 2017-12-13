@@ -5,16 +5,18 @@ import HomeSlider from "./HomeSlider/index";
 import {connect} from 'react-redux';
 import actions from '../../store/actions/home';
 import HomeLessons from "./HomeLessons/index";
+import {upLoadMore} from '../../utils';
 class Home extends Component {
   componentDidMount(){
     this.props.fetchSliders();
     this.props.fetchLessons();
+    upLoadMore(this.content,this.props.fetchLessons);
   }
   render() {
     return (
       <div className="home">
         <HomeHeader/>
-        <div className="main-content">
+        <div ref={content=>this.content=content} className="main-content">
             <HomeSlider sliders={this.props.sliders.list}/>
             <HomeLessons
               hasMore={this.props.lessons.hasMore}
