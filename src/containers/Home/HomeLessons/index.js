@@ -10,7 +10,7 @@ export default class HomeLessons extends Component {
         </div>
         {
           this.props.lessons.map((item, index) => (
-            <div key={item.id}>
+            <div key={item.id} className="lesson">
               <img src={item.url}/>
               <p>{item.title}</p>
               <p>{item.price}</p>
