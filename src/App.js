@@ -5,6 +5,7 @@ import {HashRouter as Router,Route} from 'react-router-dom';
 import Home from "./containers/Home/index";
 import Course from "./containers/Course/index";
 import Profile from "./containers/Profile/index";
+import Detail from "./containers/Detail/index";
 //The prop `history` is marked as required in `Router`
 //如果是HashRouter hash
 //BrowserRouter html5 pushState
@@ -17,6 +18,7 @@ export default class App extends Component {
           <Route exact path="/" component={Home}/>
           <Route path="/course" component={Course}/>
           <Route path="/profile" component={Profile}/>
+          <Route path="/detail/:id" component={Detail}/>
           <Tab/>
         </div>
       </Router>
