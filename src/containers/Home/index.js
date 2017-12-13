@@ -4,6 +4,7 @@ import './index.less'
 import HomeSlider from "./HomeSlider/index";
 import {connect} from 'react-redux';
 import actions from '../../store/actions/home';
+import HomeLessons from "./HomeLessons/index";
 class Home extends Component {
   componentDidMount(){
     this.props.fetchSliders();
@@ -15,6 +16,8 @@ class Home extends Component {
         <HomeHeader/>
         <div className="main-content">
             <HomeSlider sliders={this.props.sliders.list}/>
+            <HomeLessons
+              lessons={this.props.lessons.list}/>
         </div>
       </div>
     )
