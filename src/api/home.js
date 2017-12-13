@@ -4,6 +4,6 @@ export function getSliders() {
   return get('/api/sliders');
 }
 //获取课程列表
-export function getLessons(offset,limit) {
-  return get(`/api/lessons?offset=${offset}&limit=${limit}`);
+export function getLessons(type,offset,limit) {
+  return get(`/api/lessons?type=${type}&offset=${offset}&limit=${limit}`);
 }

@@ -7,15 +7,21 @@ export default class HomeHeader extends Component {
     this.state = {showList: false};
   }
 
-  handleClick = () => {
+  switchShow = () => {
     this.setState({showList: !this.state.showList});
+  }
+
+  changeType = (event)=>{
+   let type = event.target.dataset.type;
+   this.props.changeType(type);
+   this.switchShow();
   }
   getMenuList = () => (
       <CSSTransition classNames="fade" timeout={500}>
-        <ul className="menu-list">
-          <li data-type="">全部课程</li>
-          <li data-type="react">React课程</li>
-          <li data-type="vue">Vue课程</li>
+        <ul className="menu-list" onClick={this.changeType}>
+          <li className={this.props.type == ""?'active':''} data-type="">全部课程</li>
+          <li className={this.props.type == "react"?'active':''} data-type="react">React课程</li>
+          <li className={this.props.type == "vue"?'active':''} data-type="vue">Vue课程</li>
         </ul>
       </CSSTransition>
 )
@@ -25,7 +31,7 @@ export default class HomeHeader extends Component {
       <div className="home-header">
         <div className="home-logo">
           <img src={require('../../../images/logo.png')}/>
-          <div onClick={this.handleClick}>
+          <div onClick={this.switchShow}>
             {
               this.state.showList ? <i className="iconfont icon-guanbi"></i> : <i className="iconfont icon-uilist"></i>
             }

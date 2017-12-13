@@ -17,7 +17,8 @@ class Home extends Component {
   render() {
     return (
       <div className="home">
-        <HomeHeader/>
+        <HomeHeader type={this.props.type}
+                    changeType={this.props.changeType}/>
         <div ref={content => this.content = content} className="main-content">
           <div className="main-logo"></div>
           <HomeSlider sliders={this.props.sliders.list}/>

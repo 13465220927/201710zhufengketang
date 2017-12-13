@@ -26,10 +26,12 @@ app.get('/api/sliders',function(req,res){
 });
 let lessons = require('./mock/lessons');//{hasMore,list}
 app.get('/api/lessons',function(req,res){
-  let {offset=0,limit=5} = req.query;
+  let {type="",offset=0,limit=5} = req.query;
   offset = isNaN(offset)?0:parseInt(offset);
   limit = isNaN(limit)?0:parseInt(limit);
   let newLessons = JSON.parse(JSON.stringify(lessons));
+  //如果type为空，则不过滤课程类型，如果type不为空，则只出现课程类型跟传入的type相同的课程
+  newLessons.list = newLessons.list.filter(item=>item.type == type || type =="");
   // 0+5  5+5=10 10+5=15 15+5=20
   //如果下一页的起始索引已经大于等于总条数了，则认为已经分页完毕，后面已经没有数据了
   newLessons.hasMore = limit+offset<newLessons.list.length;//20

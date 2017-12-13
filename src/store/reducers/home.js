@@ -1,6 +1,7 @@
 import * as types from '../action-types';
 //首页的初始状态
 let initState = {
+  type:'',//课程的分类 默认为空串
   sliders: {
     loading: false,
     list: []
@@ -71,6 +72,11 @@ export default function (state = initState, action) {
           offset:action.payload.list.length,
           hasMore:action.payload.hasMore
         }
+      }
+    case types.CHANGE_TYPE:
+      return {
+        ...state,
+        type:action.payload
       }
     default:
       return state;

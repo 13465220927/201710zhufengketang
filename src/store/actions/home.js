@@ -1,6 +1,6 @@
 import * as types from '../action-types';
 import {getSliders,getLessons} from '../../api/home';
-export default {
+let actions =  {
   fetchSliders(){
     //正常的action只能使用纯对象，如果需要派发函数的话需要使用中间件，redux-thunk
     return function(dispatch,getState){
@@ -19,7 +19,7 @@ export default {
   },
   fetchLessons(){
     return function(dispatch,getState){
-      let {lessons:{
+      let {type,lessons:{
         loading,
         offset,
         limit,
@@ -28,22 +28,35 @@ export default {
       //如果已经在获取数据了，则重复点击不要再获取了
       if(hasMore && !loading){
         dispatch({type:types.FETCH_LESSONS});
-        dispatch({type:types.FETCH_LESSONS_SUCCESS,payload:getLessons(offset,limit)});
+        dispatch({type:types.FETCH_LESSONS_SUCCESS,payload:getLessons(type,offset,limit)});
       }
     }
   },
-  //下拉刷新
-  refreshLessons(){
+  refreshLessons(){//下拉刷新
     return function(dispatch,getState){
       let {
+        type,
         lessons:{
           loading,offset,limit,hasMore
         }
       } = getState().home;
       if(!loading){
          dispatch({type:types.REFRESH_LESSONS});
-         dispatch({type:types.REFRESH_LESSONS_SUCCESS,payload:getLessons(0,offset)});
+         dispatch({type:types.REFRESH_LESSONS_SUCCESS,payload:getLessons(type,0,offset)});
       }
+    }
+  },
+  changeType(type){
+    return function(dispatch,getState){
+      //1.改变课程分类
+       dispatch({
+         type:types.CHANGE_TYPE,
+         payload:type
+       });
+      //2.根据新的课程分类过滤课程列表
+      actions.refreshLessons()(dispatch,getState);
     }
   }
 }
+
+export default actions;
