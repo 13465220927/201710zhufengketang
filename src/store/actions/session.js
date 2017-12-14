@@ -22,6 +22,10 @@ export default {
   },
   logout(){
 
+  },
+  clearMessages(){
+    return {
+      type:types.CLEAR_MESSAGES
+    }
   }
-
 }

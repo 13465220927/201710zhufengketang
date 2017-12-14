@@ -1,17 +1,32 @@
 import React, {Component} from 'react';
 import './index.less'
-export default class Alert extends Component {
+import {connect} from 'react-redux';
+import actions from '../../store/actions/session';
+class Alert extends Component {
   static defaultProps = {
-    level:'default'
+    level: 'default'
+  }
+  //在组件销毁之前把redux中的消息清除掉
+  componentDidMount(){
+    setTimeout(()=>{
+      this.props.clearMessages();
+    },3000);
   }
   render() {
-    return (
-      <div
-        className={"alert "+(this.props.level)}>
-        {
-          this.props.children
-        }
-      </div>
-    )
+    if (this.props.success) {
+      return (
+        <div className="alert success">{this.props.success}</div>
+      )
+    } else if (this.props.error) {
+      return (
+        <div className="alert error">{this.props.error}</div>
+      )
+    } else {
+      return null;
+    }
   }
 }
+export default connect(
+  state => state.session,
+  actions
+)(Alert);

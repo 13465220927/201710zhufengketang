@@ -16,6 +16,12 @@ export default function (state = initState, action) {
       return {
         ...action.payload
       };
+    case types.CLEAR_MESSAGES:
+      return {
+        ...state,
+        error: '',
+        success:''
+      }
     default:
       return state;
   }

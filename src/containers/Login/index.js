@@ -17,12 +17,7 @@ class Login extends Component {
         <input type="text" placeholder="密码"/>
         <Link to="/reg">前往注册</Link>
         <div className="login-btn">登&nbsp;录</div>
-        {
-          this.props.success&&<Alert level="success">{this.props.success}</Alert>
-        }
-        {
-          this.props.error&&<Alert level="error">{this.props.error}</Alert>
-        }
+        <Alert/>
       </div>
     )
   }

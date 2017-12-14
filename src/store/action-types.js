@@ -20,3 +20,6 @@ export const REG = 'REG';
 export const LOGIN = 'LOGIN';
 //退出
 export const LOGOUT = 'LOGOUT';
+
+//清空消息
+export const CLEAR_MESSAGES = 'CLEAR_MESSAGES'

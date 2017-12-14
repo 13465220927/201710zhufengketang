@@ -24,12 +24,7 @@ class Reg extends Component {
         <div
           onClick={this.handleReg}
           className="reg-btn">注&nbsp;册</div>
-        {
-          this.props.success&&<Alert level="success">{this.props.success}</Alert>
-        }
-        {
-          this.props.error&&<Alert level="error">{this.props.error}</Alert>
-        }
+        <Alert/>
       </div>
     )
   }
