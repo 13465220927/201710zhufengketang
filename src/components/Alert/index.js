@@ -6,7 +6,6 @@ class Alert extends Component {
   static defaultProps = {
     level: 'default'
   }
-  //在组件销毁之前把redux中的消息清除掉
   componentDidMount(){
     setTimeout(()=>{
       this.props.clearMessages();

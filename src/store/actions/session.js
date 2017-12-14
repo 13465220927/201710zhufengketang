@@ -17,8 +17,19 @@ export default {
      })
    }
   },
-  login(){
-
+  login(user){
+    return function(dispatch,getState){
+      login(user).then(result=>{
+        let{code,success,error,user} = result;
+        dispatch({
+          type:types.LOGIN,
+          payload:{success,error,user}
+        });
+        if(code == 0){
+          dispatch(push('/profile'));
+        }
+      })
+    }
   },
   logout(){
 

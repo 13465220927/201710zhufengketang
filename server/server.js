@@ -72,7 +72,7 @@ app.post('/api/login',function(req,res){
    if(oldUser){
      //如果找到了用户名和密码相同的用户，表示登录成功,把用户存放入session中
      req.session.user = oldUser;
-     res.json({code:0,success:oldUser,user});
+     res.json({code:0,success:"登录成功",user});
    }else{
      res.json({code:1,error:'用户名或密码错误'});
    }
