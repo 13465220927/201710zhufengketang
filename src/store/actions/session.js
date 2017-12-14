@@ -1,5 +1,5 @@
 import * as types from '../action-types';
-import {reg,login,logout} from '../../api/session';
+import {reg,login,logout,validate} from '../../api/session';
 import {push} from 'react-router-redux';
 export default {
   reg(user){
@@ -32,11 +32,31 @@ export default {
     }
   },
   logout(){
-
+     return function(dispatch,getState){
+        logout().then(result=>{
+          let {code,success,error} = result;
+          dispatch({
+            type:types.LOGOUT,
+            payload:{success,error}
+          });
+          dispatch(push('/login'));
+        });
+     }
   },
   clearMessages(){
     return {
       type:types.CLEAR_MESSAGES
+    }
+  },
+  validate(){
+    return function(dispatch,getState){
+      validate().then(result=>{
+        let {code,success,error,user}= result;
+        dispatch({
+          type:types.VALIDATE,
+          payload:{success,error,user}
+        });
+      });
     }
   }
 }

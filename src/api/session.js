@@ -11,3 +11,7 @@ export function login(user){
 export function logout(){
   return get('/api/logout');
 }
+
+export function validate(){
+  return get('/api/validate');
+}

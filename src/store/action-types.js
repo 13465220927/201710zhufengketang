@@ -22,4 +22,5 @@ export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 
 //清空消息
-export const CLEAR_MESSAGES = 'CLEAR_MESSAGES'
+export const CLEAR_MESSAGES = 'CLEAR_MESSAGES';
+export const VALIDATE = 'VALIDATE';

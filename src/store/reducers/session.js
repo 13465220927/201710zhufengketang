@@ -16,12 +16,21 @@ export default function (state = initState, action) {
       return {
         ...action.payload
       };
+    case types.LOGOUT:///退出方法调用完成后
+      return {
+        ...action.payload
+      };
     case types.CLEAR_MESSAGES:
       return {
         ...state,
         error: '',
         success:''
-      }
+      };
+    case types.VALIDATE:
+      return {
+        ...state,
+        ...action.payload
+      };
     default:
       return state;
   }

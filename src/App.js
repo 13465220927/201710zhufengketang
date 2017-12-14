@@ -21,13 +21,13 @@ export default class App extends Component {
     return (
       <ConnectedRouter history={history}>
         <div>
+          <Tab/>
           <Route exact path="/" component={Home}/>
           <Route path="/course" component={Course}/>
           <Route path="/profile" component={Profile}/>
           <Route path="/detail/:id" component={Detail}/>
           <Route path="/login" component={Login}/>
           <Route path="/reg" component={Reg}/>
-          <Tab/>
         </div>
       </ConnectedRouter>
     )
