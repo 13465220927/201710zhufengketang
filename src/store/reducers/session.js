@@ -3,7 +3,7 @@ import * as types from '../action-types';
 let initState = {
   error: '',//错误消息
   success: '',//成功消息
-  user,//如果登录成功的话，需要给此属性赋值为登录用户
+  user:null,//如果登录成功的话，需要给此属性赋值为登录用户
 }
 export default function (state = initState, action) {
   switch (action.type) {
@@ -16,5 +16,7 @@ export default function (state = initState, action) {
       return {
         ...action.payload
       };
+    default:
+      return state;
   }
 }

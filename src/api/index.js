@@ -20,5 +20,5 @@ export function post(url,data) {
       "Accept":"application/json"//告诉服务器我客户端需要的数据类型
     },
     body:JSON.stringify(data)//请求体格式
-  })
+  }).then(res=>res.json())
 }

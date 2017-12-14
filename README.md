@@ -43,6 +43,6 @@ npm install babel-core babel-loader babel-preset-es2015 babel-preset-react babel
 2. 使用ConnectedRouter
 3. 合并reducer的时候，增加一个子reducer
 4. 应用中间件
-5.
+5. 使用push进行跳转
 
 

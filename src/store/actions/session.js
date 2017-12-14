@@ -5,6 +5,7 @@ export default {
   reg(user){
    return function(dispatch,getState){
      reg(user).then(result=>{
+       console.log(result);
        let {code,success,error} = result;
        dispatch({
          type:types.REG,

@@ -2,7 +2,14 @@ import React, {Component} from 'react';
 import NavHeader from '../../components/NavHeader';
 import {Link} from 'react-router-dom';
 import './index.less'
-export default class Reg extends Component {
+import {connect} from 'react-redux';
+import actions from '../../store/actions/session';
+class Reg extends Component {
+  handleReg = ()=>{
+    let username = this.username.value;
+    let password = this.password.value;
+    this.props.reg({username,password});
+  }
   render() {
     return (
       <div className="reg-panel">
@@ -10,11 +17,17 @@ export default class Reg extends Component {
         <div className="reg-logo">
           <img src={require('../../images/profile.png')} alt=""/>
         </div>
-        <input type="text" placeholder="用户名"/>
-        <input type="text" placeholder="密码"/>
+        <input ref={input=>this.username=input} type="text" placeholder="用户名"/>
+        <input ref={input=>this.password=input}  type="text" placeholder="密码"/>
         <Link to="/login">前往登录</Link>
-        <div className="reg-btn">注&nbsp;册</div>
+        <div
+          onClick={this.handleReg}
+          className="reg-btn">注&nbsp;册</div>
       </div>
     )
   }
 }
+export default connect(
+  state=>state.session,
+  actions
+)(Reg);
