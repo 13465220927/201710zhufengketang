@@ -7,6 +7,7 @@ import Course from "./containers/Course/index";
 import Profile from "./containers/Profile/index";
 import Detail from "./containers/Detail/index";
 import Login from "./containers/Login/index";
+import Reg from "./containers/Reg/index";
 //The prop `history` is marked as required in `Router`
 //如果是HashRouter hash
 //BrowserRouter html5 pushState
@@ -21,6 +22,7 @@ export default class App extends Component {
           <Route path="/profile" component={Profile}/>
           <Route path="/detail/:id" component={Detail}/>
           <Route path="/login" component={Login}/>
+          <Route path="/reg" component={Reg}/>
           <Tab/>
         </div>
       </Router>

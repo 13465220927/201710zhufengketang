@@ -34,3 +34,4 @@ npm install babel-core babel-loader babel-preset-es2015 babel-preset-react babel
 4. 在reducer里添加两个case以处理这两种动作类型
 5. 在actions里添加一个新的方法
 6. 在组件里调用action的方法
+7. 在组件用最新的属性进行渲染

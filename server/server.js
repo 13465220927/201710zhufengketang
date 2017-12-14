@@ -1,5 +1,9 @@
 let express = require('express');
+let bodyParser = require('body-parser');
 let app = express();
+//这里存放着所有的用户信息
+let users = [];
+app.use(bodyParser.json());//客户端发过来的请求体是JSON格式的
 app.use(function(req,res,next){
   //如果在webpack里配置了代理，那么这些响应头都不要了
   //只允许8080访问
@@ -42,5 +46,33 @@ app.get('/api/lessons',function(req,res){
     lesson.title = `${offset+i+1}-${lesson.title}`;
   }
   res.json(newLessons);
+});
+//users=[{username:'zfpx',password:'123'}]
+app.post('/api/reg',function(req,res){
+  let user = req.body;//取得请求体
+  let oldUser = users.find(item=>item.username == user.username);
+  if(oldUser){
+    //两种异常 1.服务异常 2.业务异常
+    res.json({code:1,error:'用户名重复'});//如果失败有一个error
+  }else{
+    users.push(user);
+    // code=0表示一切正常成功，非0表示失败
+    res.json({code:0,data:'注册成功'});//如果成功有一个data
+  }
+});
+app.post('/api/login',function(req,res){
+   let user = req.body;//取得登录的请求体
+   let oldUser = users.find(item=>item.username==user.username&&item.password==user.password);
+   if(oldUser){
+     //如果找到了用户名和密码相同的用户，表示登录成功,把用户存放入session中
+     req.session.user = oldUser;
+     res.json({code:0,data:oldUser});
+   }else{
+     res.json({code:1,error:'用户名或密码错误'});
+   }
+});
+app.get('/api/logout',function(req,res){
+   req.session.user = null;
+   res.json({code:0,data:'退出成功'});
 });
 app.listen(3000);
