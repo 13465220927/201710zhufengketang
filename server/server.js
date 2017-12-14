@@ -1,6 +1,12 @@
 let express = require('express');
 let bodyParser = require('body-parser');
+let session = require('express-session');
 let app = express();
+app.use(session({
+  resave:true,
+  secret:'zfpx',
+  saveUninitialized:true
+}));
 //这里存放着所有的用户信息
 let users = [];
 app.use(bodyParser.json());//客户端发过来的请求体是JSON格式的
@@ -57,7 +63,7 @@ app.post('/api/reg',function(req,res){
   }else{
     users.push(user);
     // code=0表示一切正常成功，非0表示失败
-    res.json({code:0,data:'注册成功'});//如果成功有一个data
+    res.json({code:0,success:'注册成功'});//如果成功有一个success
   }
 });
 app.post('/api/login',function(req,res){
@@ -66,13 +72,13 @@ app.post('/api/login',function(req,res){
    if(oldUser){
      //如果找到了用户名和密码相同的用户，表示登录成功,把用户存放入session中
      req.session.user = oldUser;
-     res.json({code:0,data:oldUser});
+     res.json({code:0,success:oldUser,user});
    }else{
      res.json({code:1,error:'用户名或密码错误'});
    }
 });
 app.get('/api/logout',function(req,res){
    req.session.user = null;
-   res.json({code:0,data:'退出成功'});
+   res.json({code:0,success:'退出成功'});
 });
 app.listen(3000);
