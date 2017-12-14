@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import './index.less'
 import {connect} from 'react-redux';
 import actions from '../../store/actions/session';
+import Alert from "../../components/Alert/index";
 class Reg extends Component {
   handleReg = ()=>{
     let username = this.username.value;
@@ -23,6 +24,12 @@ class Reg extends Component {
         <div
           onClick={this.handleReg}
           className="reg-btn">注&nbsp;册</div>
+        {
+          this.props.success&&<Alert level="success">{this.props.success}</Alert>
+        }
+        {
+          this.props.error&&<Alert level="error">{this.props.error}</Alert>
+        }
       </div>
     )
   }
