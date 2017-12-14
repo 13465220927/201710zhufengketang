@@ -1,6 +1,7 @@
 import * as types from '../action-types';
 import {reg,login,logout,validate} from '../../api/session';
 import {push} from 'react-router-redux';
+import history from '../history';
 export default {
   reg(user){
    return function(dispatch,getState){
@@ -12,7 +13,8 @@ export default {
          payload:{success,error}
        });
        if(code == 0){//code=0表示成功 成功后跳到登录页
-         dispatch(push('/login'));
+         //dispatch(push('/login'));
+         history.push('/login');
        }
      })
    }

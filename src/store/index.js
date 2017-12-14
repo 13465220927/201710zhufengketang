@@ -4,8 +4,8 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import promise from 'redux-promise';
 import {routerMiddleware} from 'react-router-redux';
-import createHashHistory from 'history/createHashHistory';
-let router = routerMiddleware(createHashHistory());
+import history from './history';
+let router = routerMiddleware(history);
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 let store =applyMiddleware(router,thunk,promise,logger)(createStore)(reducers);
