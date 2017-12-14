@@ -9,7 +9,7 @@ npm install body-parser connect-mongo ejs express express-session mongoose -S
 ```
 ## 生产依赖
 ```
-npm install es6-promise history react react-dom react-redux react-router-dom react-router-redux react-swipe react-transition-group redux redux-thunk swipe-js-iso whatwg-fetch -S
+npm install es6-promise history react react-dom react-redux react-router-dom react-router-redux@next react-swipe react-transition-group redux redux-thunk swipe-js-iso whatwg-fetch -S
 ```
 ## 开发依赖
 ```
@@ -35,3 +35,14 @@ npm install babel-core babel-loader babel-preset-es2015 babel-preset-react babel
 5. 在actions里添加一个新的方法
 6. 在组件里调用action的方法
 7. 在组件用最新的属性进行渲染
+
+## 如何使用react-router-redux
+目的只有一个，就是在actions里跳转路径
+
+1. 创建history
+2. 使用ConnectedRouter
+3. 合并reducer的时候，增加一个子reducer
+4. 应用中间件
+5.
+
+
