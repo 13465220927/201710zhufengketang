@@ -19,10 +19,16 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        query: {
-          presets: ["es2015", "stage-0", "react"]
-        },
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        query:{
+          "presets": [
+            "env","react"
+          ],
+          "plugins": [
+            "transform-object-rest-spread",
+            "transform-class-properties"
+          ]
+        }
       },
       {
         test:/\.less$/,
