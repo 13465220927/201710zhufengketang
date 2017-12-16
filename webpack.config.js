@@ -1,5 +1,6 @@
 let path = require('path');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
+var babelpolyfill = require("babel-polyfill");
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -22,7 +23,7 @@ module.exports = {
         exclude: /node_modules/,
         query:{
           "presets": [
-            "env","react"
+            "es2015","stage-0","react"
           ],
           "plugins": [
             "transform-object-rest-spread",
